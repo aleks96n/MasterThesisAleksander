@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Homes/untitled.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.647059, 0.0901961, 0.0901961, 1 )
+
+[node name="PlaceLater" type="Spatial"]
+
+[node name="House" type="MeshInstance" parent="."]
+transform = Transform( 0.275583, 0.000481321, 0.276676, -0.000604939, 0.438281, -2.74598e-06, -0.276676, -0.000478863, 0.275583, 0, 0, 0 )
+use_in_baked_light = true
+mesh = ExtResource( 1 )
+skeleton = NodePath("../../../../../../../../../../../..")
+material/0 = SubResource( 1 )
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null

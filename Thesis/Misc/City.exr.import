@@ -1,0 +1,25 @@
+[remap]
+
+importer="texture_array"
+type="TextureArray"
+path="res://.import/City.exr-3cd2141726cd874b1256735801f9cfea.texarr"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Misc/City.exr"
+dest_files=[ "res://.import/City.exr-3cd2141726cd874b1256735801f9cfea.texarr" ]
+
+[params]
+
+compress/mode=0
+compress/no_bptc_if_rgb=false
+flags/repeat=false
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=false
+slices/horizontal=1
+slices/vertical=2

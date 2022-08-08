@@ -1,0 +1,353 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scripts/OwnRayCast.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ObjectPlacing.gd" type="Script" id=8]
+[ext_resource path="res://OQ_Toolkit/OQ_RightController.tscn" type="PackedScene" id=11]
+[ext_resource path="res://OQ_Toolkit/OQ_Helpers/OQ_VisibilityToggle.tscn" type="PackedScene" id=12]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin.tscn" type="PackedScene" id=13]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRController/Feature_UIRayCast.tscn" type="PackedScene" id=14]
+[ext_resource path="res://OQ_Toolkit/OQ_LeftController.tscn" type="PackedScene" id=15]
+[ext_resource path="res://OQ_Toolkit/OQ_UI2D/OQ_UI2DCanvas.tscn" type="PackedScene" id=16]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Locomotion_Stick.tscn" type="PackedScene" id=17]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Feature_VRSimulator.tscn" type="PackedScene" id=18]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRCamera.tscn" type="PackedScene" id=19]
+
+[sub_resource type="CubeMesh" id=7]
+size = Vector3( 0.004, 0.004, 1 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_unshaded = true
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+
+[sub_resource type="BoxShape" id=6]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 8 )
+
+[node name="OQ_ARVROrigin" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.149 )
+
+[node name="OQ_LeftController" parent="OQ_ARVROrigin" instance=ExtResource( 15 )]
+transform = Transform( 0.573577, 0.421895, -0.70215, 0, 0.857167, 0.515039, 0.819152, -0.295414, 0.491651, 0.168085, 4.84152, -0.125019 )
+
+[node name="Spatial" type="Spatial" parent="OQ_ARVROrigin/OQ_LeftController"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.262722, 0.0904901, -0.0837288 )
+script = ExtResource( 1 )
+ui_raycast_length = 10.0
+
+[node name="RayCastMesh" type="MeshInstance" parent="OQ_ARVROrigin/OQ_LeftController/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.0929856, -0.5 )
+visible = false
+mesh = SubResource( 7 )
+skeleton = NodePath("../RayCast")
+material/0 = SubResource( 8 )
+
+[node name="RayCast" type="RayCast" parent="OQ_ARVROrigin/OQ_LeftController/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, -0.005, -0.01 )
+enabled = true
+cast_to = Vector3( 0, 0, -10 )
+
+[node name="Feature_UIRayCast" parent="OQ_ARVROrigin/OQ_LeftController" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00513482, 0, -3.8147e-06 )
+ui_raycast_length = 10.0
+
+[node name="OQ_RightController" parent="OQ_ARVROrigin" instance=ExtResource( 11 )]
+transform = Transform( 0.573577, 0.421895, -0.70215, 0, 0.857167, 0.515039, 0.819152, -0.295414, 0.491651, 0.353386, 4.70827, -0.00328827 )
+
+[node name="OQ_VisibilityToggle" parent="OQ_ARVROrigin/OQ_RightController" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0854332, 0.178913, 0 )
+invisible_on_start = true
+
+[node name="OQ_UI2DCanvas" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle" instance=ExtResource( 16 )]
+
+[node name="OQ_ARVRCamera" parent="OQ_ARVROrigin" instance=ExtResource( 19 )]
+transform = Transform( 0.573577, 0.421895, -0.702152, 0, 0.857168, 0.515038, 0.819153, -0.295414, 0.491652, 0, 5, 0 )
+current = true
+
+[node name="Locomotion_Stick" parent="OQ_ARVROrigin" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 3.84077, -0.499998 )
+move_speed = 15.0
+
+[node name="Feature_VRSimulator" parent="." instance=ExtResource( 18 )]
+
+[node name="ToSaveAsset" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0276446, 0, 0.00656319 )
+
+[node name="Foundation" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation2" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation2/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation3" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation3/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation4" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation4/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation5" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation5/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation6" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation6/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation7" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 2 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation7/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation8" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 2 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation8/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation9" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 2 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation9"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation9/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation10" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 2 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation10"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation10/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation11" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation11"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation11/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation12" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 4 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation12"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation12/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation13" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 4 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation13"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation13/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation14" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 4 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation14"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation14/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation15" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 4 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation15"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation15/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation16" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 6 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation16"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation16/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation17" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 6 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation17"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation17/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation18" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 6 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation18"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation18/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation19" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 6 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation19"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation19/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation20" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 6 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation20"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation20/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation21" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 8 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation21"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation21/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation22" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 8 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation22"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation22/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation23" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 8 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation23"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation23/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation24" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 8 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation24"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation24/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="Foundation25" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 8 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation25"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation25/StaticBody"]
+shape = SubResource( 6 )

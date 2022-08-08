@@ -1,0 +1,554 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Materials/FinishedMaterials/WoodPlankFloor.tres" type="Material" id=1]
+[ext_resource path="res://Materials/FinishedMaterials/Glass.tres" type="Material" id=5]
+[ext_resource path="res://Scripts/SendSignal.gd" type="Script" id=7]
+[ext_resource path="res://Materials/FinishedMaterials/Brick.tres" type="Material" id=14]
+[ext_resource path="res://Scripts/Logic.gd" type="Script" id=15]
+[ext_resource path="res://Assets/CSGBrick.tscn" type="PackedScene" id=16]
+
+[sub_resource type="ArrayMesh" id=53]
+resource_local_to_scene = true
+surfaces/0 = {
+"aabb": AABB( 0, 0, 0, 1, 1.00001, 1 ),
+"array_data": PoolByteArray( 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 60 ),
+"array_index_data": PoolByteArray(  ),
+"blend_shape_data": [  ],
+"format": 97299,
+"index_count": 0,
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 36
+}
+
+[sub_resource type="ArrayMesh" id=35]
+resource_local_to_scene = true
+surfaces/0 = {
+"aabb": AABB( 0, 0, 0, 1, 1.00001, 1 ),
+"array_data": PoolByteArray( 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 60 ),
+"array_index_data": PoolByteArray(  ),
+"blend_shape_data": [  ],
+"format": 97299,
+"index_count": 0,
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 36
+}
+
+[sub_resource type="SpatialMaterial" id=36]
+albedo_color = Color( 0.160784, 0.160784, 0.160784, 1 )
+
+[sub_resource type="GDScript" id=37]
+resource_local_to_scene = true
+script/source = "extends CSGMesh
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+onready var csgBox : CSGMesh = self
+onready var lastAxis = \"NAN\"
+onready var touchedCSG = null
+onready var upFace = [0, 4, 5, 6, 10, 11, 12, 13, 14, 15, 16, 17, 24, 28, 29, 30, 34, 35]
+onready var downFace = [1, 2, 3, 7, 8, 9, 18, 19, 20, 21, 22, 23, 25, 26, 27, 31, 32, 33]
+onready var leftFace = [0, 1, 5, 8, 9, 10, 12, 13, 17, 18, 19, 23, 24, 25, 26, 27, 28, 29]
+onready var rightFace = [2, 3, 4, 6, 7, 11, 14, 15, 16, 20, 21, 22, 30, 31, 32, 33, 34, 35]
+onready var backFace = [0, 1, 2, 3, 4, 5, 13, 14, 15, 18, 22, 23, 26, 27, 28, 30, 31, 35]
+onready var frontFace = [6, 7, 8, 9, 10, 11, 12, 16, 17, 19, 20, 21, 24, 25, 29, 32, 33, 34]
+onready var tool_ = MeshDataTool.new()
+onready var hackyMesh = null
+onready var allAxis = self.get_children()
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	allAxis.pop_back()
+	tool_.create_from_surface(mesh, 0)
+
+func scaleProper(direction):
+	#csgBox.translation.ro
+	if(lastAxis == \"RightUpper\"):
+		if(abs(direction.y) > abs(direction.x)):
+			if(hackyMesh):
+				hackyMesh.translation.y -= direction.y
+			for i in upFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.y -= direction.y
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(lastAxis, null, null, null, \"y\", direction.y, null, null)
+		else:
+			if(hackyMesh):
+				hackyMesh.translation.x -= direction.x
+			for i in leftFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.x -= direction.x
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[4], allAxis[5], allAxis[2], allAxis[1], \"x\", direction.x, -direction.x, null)
+	elif(lastAxis == \"LeftUpper\"):
+		if(abs(direction.y) > abs(direction.x)):
+			if(hackyMesh):
+				hackyMesh.translation.y -= direction.y
+			for i in upFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.y -= direction.y
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(lastAxis, null, null, null, \"y\", direction.y, null, null)
+		else:
+			if(hackyMesh):
+				hackyMesh.translation.x -= direction.x
+			for i in rightFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.x -= direction.x
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[4], allAxis[5], allAxis[0], allAxis[3], \"x\", direction.x, null, null)
+	elif(lastAxis == \"TopUpper\"):
+		if(abs(direction.y) > abs(direction.x)):
+			if(hackyMesh):
+				hackyMesh.translation.y -= direction.y
+			for i in upFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.y -= direction.y
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(lastAxis, null, null, null, \"y\", direction.y, null, null)
+		else:
+			if(hackyMesh):
+				hackyMesh.translation.z -= direction.z
+			for i in frontFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.z -= direction.z
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[6], allAxis[7], allAxis[1], allAxis[0], \"z\", direction.z, null, null)
+	elif(lastAxis == \"BottomUpper\"):
+		if(abs(direction.y) > abs(direction.x)):
+			if(hackyMesh):
+				hackyMesh.translation.y -= direction.y
+			for i in upFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.y -= direction.y
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(lastAxis, null, null, null, \"y\", direction.y, null, null)
+		else:
+			if(hackyMesh):
+				hackyMesh.translation.z -= direction.z
+			for i in backFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.z -= direction.z
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[6], allAxis[7], allAxis[3], allAxis[2], \"z\", direction.z, direction.z, null)
+	elif(lastAxis == \"BottomRight\"):
+		if(abs(direction.z) > abs(direction.x)):
+			if(hackyMesh):
+				hackyMesh.translation.z -= direction.z
+			for i in backFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.z -= direction.z
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[6], allAxis[7], allAxis[4], allAxis[3], \"z\", direction.z, direction.z, null)
+		else:
+			if(hackyMesh):
+				hackyMesh.translation.x -= direction.x
+			for i in leftFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.x -= direction.x
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[4], allAxis[5], allAxis[6], allAxis[1], \"x\", direction.x, -direction.x, null)
+	elif(lastAxis == \"BottomLeft\"):
+		if(abs(direction.z) > abs(direction.x)):
+			if(hackyMesh):
+				hackyMesh.translation.z -= direction.z
+			for i in backFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.z -= direction.z
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[7], allAxis[6], allAxis[4], allAxis[2], \"z\", direction.z, direction.z, null)
+		else:
+			if(hackyMesh):
+				hackyMesh.translation.x -= direction.x
+			for i in rightFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.x -= direction.x
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[4], allAxis[5], allAxis[7], allAxis[0], \"x\", direction.x, null, null)
+	elif(lastAxis == \"TopLeft\"):
+		if(abs(direction.z) > abs(direction.x)):
+			if(hackyMesh):
+				hackyMesh.translation.z -= direction.z
+			for i in frontFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.z -= direction.z
+				tool_.set_vertex(i, vertex)
+			#print(allAxis)
+			communicateWithAxis(allAxis[7], allAxis[6], allAxis[5], allAxis[1], \"z\", direction.z, null, null)
+		else:
+			if(hackyMesh):
+				hackyMesh.translation.x -= direction.x
+			for i in rightFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.x -= direction.x
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[5], allAxis[4], allAxis[7], allAxis[3], \"x\", direction.x, null, null)
+	elif(lastAxis == \"TopRight\"):
+		if(abs(direction.z) > abs(direction.x)):
+			if(hackyMesh):
+				hackyMesh.translation.z -= direction.z
+			for i in frontFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.z -= direction.z
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[7], allAxis[6], allAxis[5], allAxis[0], \"z\", -direction.z, null, direction.z)
+		else:
+			if(hackyMesh):
+				hackyMesh.translation.x -= direction.x
+			for i in leftFace:
+				var vertex = tool_.get_vertex(i)
+				vertex.x -= direction.x
+				tool_.set_vertex(i, vertex)
+			communicateWithAxis(allAxis[5], allAxis[4], allAxis[6], allAxis[2], \"x\", direction.x, -direction.x, null)
+		
+	mesh.surface_remove(0)
+	tool_.commit_to_surface(mesh)
+	#csgBox.scale += -1*direction
+#	if(csgBox.scale.x < 0 and csgBox.scale.y < 0 and csgBox.scale.z < 0):
+#		csgBox.invert_faces = true
+#	elif( (csgBox.scale.x < 0 and csgBox.scale.y < 0) or (csgBox.scale.x < 0 and csgBox.scale.z < 0) or (csgBox.scale.y < 0 and csgBox.scale.z < 0)):
+#		csgBox.invert_faces = false
+#	elif (csgBox.scale.x < 0 or csgBox.scale.y < 0 or csgBox.scale.z < 0):
+#		csgBox.invert_faces = true
+#	else:
+#		csgBox.invert_faces = false
+
+func receiveName(name, lastMesh):
+	lastAxis = name
+	hackyMesh = lastMesh
+	if(lastAxis != \"NAN\"):
+		get_node(lastAxis).disableBar()
+
+func chilling():
+	if(lastAxis != \"NAN\"):
+		get_node(lastAxis).disableBar()
+
+func movingMe(direction):
+	if(touchedCSG):
+		self.translation.x = direction.x
+		self.translation.y = max(direction.y, touchedCSG.translation.y+0.1)
+		self.translation.z = direction.z
+	else:
+		self.translation = direction
+
+func _on_CSGRigidBody_body_entered(body):
+	var helper = body.get_parent()
+	if(helper.name == \"Floor\"):
+		touchedCSG = helper
+#	if(helper.name == \"Floor\"):
+#		self.translation.y = body.get_parent().translation.y+0.2
+
+
+func _on_CSGRigidBody_body_exited(body):
+	touchedCSG = null
+	
+#moving side axises makes it so the upper axises have to scale left or right with them
+#moving the upper axises makes it so that the side axises have to scale up or down with them
+func communicateWithAxis(firstAxis, secondAxis, moveOne, moveTwo, direction, amount, secondAmount, thirdAmount):
+	#ExtureUpperLR
+	if(direction == \"z\"):
+		if(secondAmount):
+			firstAxis.scale.y += secondAmount*0.5
+			firstAxis.translation.z -= secondAmount*0.45
+			secondAxis.scale.y += secondAmount*0.5
+			secondAxis.translation.z -= secondAmount*0.45
+			moveOne.translation.z -= secondAmount
+			moveTwo.translation.z -= secondAmount
+		elif(thirdAmount):
+			firstAxis.scale.y -= thirdAmount*0.5
+			firstAxis.translation.z -= thirdAmount*0.45
+			secondAxis.scale.y -= thirdAmount*0.5
+			secondAxis.translation.z -= thirdAmount*0.45
+			moveOne.translation.z -= thirdAmount
+			moveTwo.translation.z -= thirdAmount
+		else:
+			firstAxis.scale.y -= amount*0.5
+			firstAxis.translation.z -= amount*0.45
+			secondAxis.scale.y -= amount*0.5
+			secondAxis.translation.z -= amount*0.45
+			moveOne.translation.z -= amount
+			moveTwo.translation.z -= amount
+	elif(direction == \"x\"):
+		if(secondAmount):
+			firstAxis.scale.x -= secondAmount*0.5
+			secondAxis.scale.x -= secondAmount*0.5
+		else:
+			firstAxis.scale.x -= amount*0.5
+			secondAxis.scale.x -= amount*0.5
+		firstAxis.translation.x -= amount*0.45
+		secondAxis.translation.x -= amount*0.45
+		moveOne.translation.x -= amount
+		moveTwo.translation.x -= amount
+	elif(direction == \"y\"):
+		var index = 0
+		for elem in allAxis:
+			if(elem.name != lastAxis):
+				if index < 4:
+					elem.scale.y -= amount*0.5
+					elem.translation.y -= amount*0.5
+				else:
+					elem.translation.y -= amount
+			index += 1
+	else:
+		pass
+	
+"
+
+[sub_resource type="CubeMesh" id=38]
+resource_local_to_scene = true
+
+[sub_resource type="SpatialMaterial" id=39]
+albedo_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+
+[sub_resource type="BoxShape" id=40]
+
+[sub_resource type="CubeMesh" id=41]
+resource_local_to_scene = true
+
+[sub_resource type="SpatialMaterial" id=42]
+albedo_color = Color( 0, 0.85098, 0.611765, 1 )
+
+[sub_resource type="CubeMesh" id=43]
+resource_local_to_scene = true
+
+[sub_resource type="BoxShape" id=44]
+
+[sub_resource type="BoxShape" id=45]
+
+[sub_resource type="BoxShape" id=46]
+
+[sub_resource type="CubeMesh" id=47]
+resource_local_to_scene = true
+
+[sub_resource type="SpatialMaterial" id=48]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="BoxShape" id=49]
+
+[sub_resource type="CubeMesh" id=50]
+resource_local_to_scene = true
+
+[sub_resource type="BoxShape" id=51]
+
+[sub_resource type="BoxShape" id=52]
+
+[sub_resource type="BoxShape" id=24]
+extents = Vector3( 3.45503, 1, 3.7557 )
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 1.02226, 0.562038, 0.970455 )
+
+[node name="BuildingManager" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00433236, 0, 0.00126243 )
+script = ExtResource( 15 )
+brickMaterial = ExtResource( 14 )
+woodMaterial = ExtResource( 1 )
+glassMaterial = ExtResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.914896, 0.403689, 0, -0.403689, 0.914896, 0, 2.1969, 0 )
+light_energy = 3.5
+shadow_enabled = true
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+
+[node name="CSGBrick" parent="CSGCombiner" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231363, 1.94672, -1.87998 )
+mesh = SubResource( 53 )
+
+[node name="Floor" type="CSGMesh" parent="CSGCombiner"]
+transform = Transform( 11.6809, 0, 0, 0, 1, 0, 0, 0, 11.9299, -6.55476, 0.291363, -5.45537 )
+mesh = SubResource( 35 )
+material = SubResource( 36 )
+script = SubResource( 37 )
+
+[node name="TopLeft" type="MeshInstance" parent="CSGCombiner/Floor"]
+transform = Transform( 0.008, -1.13274e-13, 1.11022e-15, 1.78178e-15, 0.507, 1.11022e-16, -1.11022e-16, -3.55271e-15, 0.013, 0.99209, 0.500319, 0.990636 )
+visible = false
+mesh = SubResource( 38 )
+material/0 = SubResource( 39 )
+script = ExtResource( 7 )
+
+[node name="RigidBody" type="RigidBody" parent="CSGCombiner/Floor/TopLeft"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/TopLeft/RigidBody"]
+transform = Transform( 3.02316, 2.80162e-12, -6.25278e-13, 1.59075e-15, 0.999729, -2.66454e-15, -2.84217e-14, 4.54747e-13, 3.19481, 0, 0.0245345, -1.01591 )
+shape = SubResource( 40 )
+
+[node name="bar" type="MeshInstance" parent="CSGCombiner/Floor/TopLeft"]
+transform = Transform( 3.02886, 1.86981e-12, -1.42109e-13, 1.97972e-14, 1.02641, -1.11022e-15, 1.98952e-13, 2.72848e-12, 1.27205, -0.111038, -0.0174506, 0.406433 )
+visible = false
+mesh = SubResource( 41 )
+material/0 = SubResource( 42 )
+
+[node name="TopRight" type="MeshInstance" parent="CSGCombiner/Floor"]
+transform = Transform( 0.008, -1.06247e-13, 4.44089e-16, 1.67075e-15, 0.51296, 5.55112e-16, -1.11022e-16, -2.13163e-14, 0.013, 0.00422812, 0.492806, 0.989172 )
+visible = false
+mesh = SubResource( 43 )
+material/0 = SubResource( 39 )
+script = ExtResource( 7 )
+
+[node name="RigidBody" type="RigidBody" parent="CSGCombiner/Floor/TopRight"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/TopRight/RigidBody"]
+transform = Transform( 3.02316, 9.86037e-13, -7.38964e-13, -1.88104e-16, 0.999606, -1.33227e-15, 0, 1.81899e-12, 3.19481, 1.52588e-05, 0.04141, -0.903236 )
+shape = SubResource( 44 )
+
+[node name="bar" type="MeshInstance" parent="CSGCombiner/Floor/TopRight"]
+transform = Transform( 3.02886, -8.58672e-13, -1.7053e-13, 1.09129e-14, 1.03047, 4.44089e-16, 2.55795e-13, 1.13687e-12, 1.27205, -9.91821e-05, -0.00264275, -0.0131683 )
+visible = false
+mesh = SubResource( 41 )
+material/0 = SubResource( 42 )
+
+[node name="BottomRight" type="MeshInstance" parent="CSGCombiner/Floor"]
+transform = Transform( 0.00812593, -1.41872e-13, 6.66134e-16, 2.2242e-15, 0.520389, 3.33067e-16, -3.33067e-16, -1.42109e-14, 0.013378, 0.00422746, 0.491472, 0.0118398 )
+visible = false
+mesh = SubResource( 43 )
+material/0 = SubResource( 39 )
+script = ExtResource( 7 )
+
+[node name="RigidBody" type="RigidBody" parent="CSGCombiner/Floor/BottomRight"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/BottomRight/RigidBody"]
+transform = Transform( 2.97632, 3.70211e-12, -2.27374e-13, 7.18769e-16, 1, -4.44089e-16, 0, 0, 3.10454, 5.34058e-05, 0.0859114, 1.19209e-07 )
+shape = SubResource( 45 )
+
+[node name="bar" type="MeshInstance" parent="CSGCombiner/Floor/BottomRight"]
+transform = Transform( 2.98192, 2.79261e-12, 0, 7.82304e-15, 1, 0, 2.27374e-13, 6.82121e-13, 1.23611, 0, 0, 0.0583804 )
+visible = false
+mesh = SubResource( 41 )
+material/0 = SubResource( 42 )
+
+[node name="BottomLeft" type="MeshInstance" parent="CSGCombiner/Floor"]
+transform = Transform( 0.00799999, -8.48126e-14, 1.9984e-15, 1.33769e-15, 0.504, 4.44089e-16, -1.11022e-16, -1.77636e-14, 0.013, 0.999439, 0.500078, 0.0102063 )
+visible = false
+mesh = SubResource( 43 )
+material/0 = SubResource( 39 )
+script = ExtResource( 7 )
+
+[node name="RigidBody" type="RigidBody" parent="CSGCombiner/Floor/BottomLeft"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/BottomLeft/RigidBody"]
+transform = Transform( 3.02316, 1.89612e-12, -9.09495e-13, 1.14291e-15, 1.00088, 0, -5.68434e-14, 0, 3.19481, -0.918365, 0.0208148, 0.408631 )
+shape = SubResource( 46 )
+
+[node name="bar" type="MeshInstance" parent="CSGCombiner/Floor/BottomLeft"]
+transform = Transform( 3.02886, -1.76817e-12, -2.84217e-13, 2.46784e-14, 1.03252, -3.10862e-15, 5.68434e-14, 5.68434e-12, 1.27205, -1.0296, -0.0170757, -0.564027 )
+visible = false
+mesh = SubResource( 41 )
+material/0 = SubResource( 42 )
+
+[node name="BottomUpper" type="MeshInstance" parent="CSGCombiner/Floor"]
+transform = Transform( 0.496, 0, 0, 0, -0.01, 0, 0, 0, -0.013, 0.502693, 1.01508, 0.00335085 )
+visible = false
+mesh = SubResource( 47 )
+material/0 = SubResource( 48 )
+script = ExtResource( 7 )
+
+[node name="RigidBody" type="RigidBody" parent="CSGCombiner/Floor/BottomUpper"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/BottomUpper/RigidBody"]
+shape = SubResource( 49 )
+
+[node name="bar" type="MeshInstance" parent="CSGCombiner/Floor/BottomUpper"]
+transform = Transform( 0.957268, 4.21774e-15, -6.08574e-08, -2.16533e-15, 1.86429, 1.24928e-11, 4.18437e-08, -1.67285e-11, 1.39225, -0.0137296, -0.0369186, 0.087635 )
+visible = false
+mesh = SubResource( 50 )
+material/0 = SubResource( 42 )
+
+[node name="TopUpper" type="MeshInstance" parent="CSGCombiner/Floor"]
+transform = Transform( 0.490897, 0, 0, 0, 0.0170722, 0, 0, 0, 0.009, 0.502459, 1.0062, 0.995738 )
+visible = false
+mesh = SubResource( 43 )
+material/0 = SubResource( 39 )
+script = ExtResource( 7 )
+
+[node name="RigidBody" type="RigidBody" parent="CSGCombiner/Floor/TopUpper"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/TopUpper/RigidBody"]
+shape = SubResource( 51 )
+
+[node name="bar" type="MeshInstance" parent="CSGCombiner/Floor/TopUpper"]
+transform = Transform( 1.01783, 3.35018e-16, -1.1069e-07, -3.17791e-16, 1.07152, 2.51062e-11, 4.44909e-08, -1.06235e-11, 2.53228, -0.00901437, -0.0326157, -1.4351 )
+visible = false
+mesh = SubResource( 50 )
+material/0 = SubResource( 42 )
+
+[node name="RightUpper" type="MeshInstance" parent="CSGCombiner/Floor"]
+transform = Transform( 0.00933214, 0, 0, 0, 0.143561, 0, 0, 0, 0.500326, 0, 0.996, 0.496 )
+visible = false
+mesh = SubResource( 43 )
+material/0 = SubResource( 39 )
+script = ExtResource( 7 )
+
+[node name="bar" type="MeshInstance" parent="CSGCombiner/Floor/RightUpper"]
+transform = Transform( 1.9484, 5.55144e-17, 1.21447e-13, -1.11022e-16, 0.97426, 1.20504e-11, -2.38304e-13, -1.18234e-11, 0.992967, -0.335693, 0.389597, 0 )
+visible = false
+mesh = SubResource( 50 )
+material/0 = SubResource( 42 )
+
+[node name="RigidBody" type="RigidBody" parent="CSGCombiner/Floor/RightUpper"]
+transform = Transform( 1, 5.68434e-14, -1.38062e-14, 2.22045e-16, 1, 1.77636e-15, -2.14934e-15, -2.27374e-13, 1, 0, 0, 0 )
+collision_layer = 2
+input_capture_on_drag = true
+mode = 1
+continuous_cd = true
+contacts_reported = 1000
+contact_monitor = true
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/RightUpper/RigidBody"]
+shape = SubResource( 52 )
+
+[node name="LeftUpper" type="MeshInstance" parent="CSGCombiner/Floor"]
+transform = Transform( 0.009, 0, 0, 0, -2.11331e-08, 0.009, 0, -0.483468, -3.93402e-10, 0.994296, 1.00447, 0.5203 )
+visible = false
+mesh = SubResource( 43 )
+material/0 = SubResource( 39 )
+script = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RigidBody" type="RigidBody" parent="CSGCombiner/Floor/LeftUpper"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/LeftUpper/RigidBody"]
+shape = SubResource( 24 )
+
+[node name="bar" type="MeshInstance" parent="CSGCombiner/Floor/LeftUpper"]
+transform = Transform( 2.04932, -1.81899e-12, 5.90047e-13, -2.66454e-15, 0.947615, 2.61209e-11, -5.22571e-13, -1.06866e-11, 2.53228, -0.72382, 0.0276322, 0.479645 )
+visible = false
+mesh = SubResource( 50 )
+material/0 = SubResource( 42 )
+
+[node name="CSGRigidBody" type="RigidBody" parent="CSGCombiner/Floor"]
+transform = Transform( 1, 1.01038e-15, 0, 1.01038e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 2
+mode = 1
+continuous_cd = true
+contacts_reported = 9999
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="CSGCombiner/Floor/CSGRigidBody"]
+transform = Transform( 0.5, -1.01302e-15, 0, 5.05192e-16, 1.00261, 0, 0, 0, 0.5, 0.502703, 0.547104, 0.495193 )
+shape = SubResource( 18 )
+
+[connection signal="body_entered" from="CSGCombiner/Floor/CSGRigidBody" to="CSGCombiner/Floor" method="_on_CSGRigidBody_body_entered"]
+[connection signal="body_exited" from="CSGCombiner/Floor/CSGRigidBody" to="CSGCombiner/Floor" method="_on_CSGRigidBody_body_exited"]

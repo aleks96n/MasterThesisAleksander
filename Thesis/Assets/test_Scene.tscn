@@ -1,0 +1,316 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Assets/ArrayBox.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/CSGMeshArrayBox.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://Scripts/BuildingManager.gd" type="Script" id=3]
+[ext_resource path="res://ArrayMeshCreation.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/RayCast.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/SendSignal.gd" type="Script" id=6]
+[ext_resource path="res://NeverDelete.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.462745, 0.333333, 0.333333, 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+params_cull_mode = 2
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="ArrayMesh" id=5]
+surfaces/0 = {
+"aabb": AABB( 0, 0, 0, 1, 1.00001, 1 ),
+"array_data": PoolByteArray( 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 60, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 127, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 129, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 129, 0, 0, 0, 0, 60, 0, 60, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 60, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 60 ),
+"array_index_data": PoolByteArray(  ),
+"blend_shape_data": [  ],
+"format": 97299,
+"index_count": 0,
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 36
+}
+
+[sub_resource type="SpatialMaterial" id=6]
+params_cull_mode = 2
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0, 0.392157, 1, 1 )
+
+[sub_resource type="CubeMesh" id=9]
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+
+[sub_resource type="BoxShape" id=11]
+
+[sub_resource type="CubeMesh" id=12]
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0, 0.85098, 0.611765, 1 )
+
+[sub_resource type="BoxShape" id=14]
+
+[sub_resource type="BoxShape" id=15]
+
+[sub_resource type="BoxShape" id=16]
+
+[sub_resource type="BoxShape" id=17]
+
+[sub_resource type="CubeMesh" id=18]
+
+[sub_resource type="BoxShape" id=19]
+
+[sub_resource type="BoxShape" id=20]
+
+[sub_resource type="BoxShape" id=21]
+
+[sub_resource type="BoxShape" id=22]
+extents = Vector3( 1.02226, 0.562038, 0.970455 )
+
+[node name="BuildingManager" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00433236, 0, 0.00126243 )
+
+[node name="Floor" type="MeshInstance" parent="."]
+transform = Transform( 3.428, 0, 0, 0, 0.134308, 0, 0, 0, 3.54634, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Floor"]
+input_ray_pickable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50611, 4.32723 )
+current = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.914896, 0.403689, 0, -0.403689, 0.914896, 0, 2.1969, 0 )
+light_energy = 3.5
+shadow_enabled = true
+
+[node name="OmegaCube" type="Spatial" parent="."]
+script = ExtResource( 4 )
+woodMaterial = SubResource( 4 )
+
+[node name="@@2" type="MeshInstance" parent="OmegaCube"]
+material_override = SubResource( 4 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="NeverDelete" type="MeshInstance" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09121, 0.163684, -3.60887e-09 )
+material_override = SubResource( 6 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 0.224144, -0.12941, -0.965926, -0.836516, 0.482963, -0.258819, 0.5, 0.866025, -4.2222e-08, -1.77829, 0.859599, 0.913861 )
+enabled = true
+collision_mask = 3
+script = ExtResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RayCast"]
+transform = Transform( 0.00783149, 0, 0, 0, 0.487751, 0, 0, 0, 0.00871569, 0, -0.497386, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="ObjectPointer" type="Position3D" parent="RayCast"]
+transform = Transform( 1, 5.96046e-08, -1.71432e-08, -5.96046e-08, 1, -4.06012e-08, -3.72529e-08, 3.79312e-08, 1, -2.98023e-07, -0.980087, 2.38419e-07 )
+
+[node name="TheBox" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75324, 0.695658, -0.356028 )
+
+[node name="CSGMesh" type="CSGMesh" parent="TheBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41279, -0.458516, -0.526005 )
+mesh = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="BottomLeft" type="MeshInstance" parent="TheBox/CSGMesh"]
+transform = Transform( 0.008, -8.48127e-14, 1.9984e-15, 1.33769e-15, 0.504, 4.44089e-16, -1.11022e-16, -1.77636e-14, 0.013, 0.999439, 0.500078, 0.0102063 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="RigidBody" type="RigidBody" parent="TheBox/CSGMesh/BottomLeft"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/BottomLeft/RigidBody"]
+transform = Transform( 3.02316, 1.89612e-12, -9.09495e-13, 1.14291e-15, 1.00088, 0, -5.68434e-14, 0, 3.19481, -0.918365, 0.0208148, 0.408631 )
+shape = SubResource( 11 )
+
+[node name="bar" type="MeshInstance" parent="TheBox/CSGMesh/BottomLeft"]
+transform = Transform( 3.02886, -1.76817e-12, -2.84217e-13, 2.46784e-14, 1.03252, -3.10862e-15, 5.68434e-14, 5.68434e-12, 1.27205, -1.0296, -0.0170757, -0.564027 )
+visible = false
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="TopLeft" type="MeshInstance" parent="TheBox/CSGMesh"]
+transform = Transform( 0.008, -1.13274e-13, 1.11022e-15, 1.78178e-15, 0.507, 1.11022e-16, -1.11022e-16, -3.55271e-15, 0.013, 0.99209, 0.500319, 0.990636 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="RigidBody" type="RigidBody" parent="TheBox/CSGMesh/TopLeft"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/TopLeft/RigidBody"]
+transform = Transform( 3.02316, 2.80162e-12, -6.25278e-13, 1.59075e-15, 0.999729, -2.66454e-15, -2.84217e-14, 4.54747e-13, 3.19481, 0, 0.0245345, -1.01591 )
+shape = SubResource( 14 )
+
+[node name="bar" type="MeshInstance" parent="TheBox/CSGMesh/TopLeft"]
+transform = Transform( 3.02886, 1.86981e-12, -1.42109e-13, 1.97972e-14, 1.02641, -1.11022e-15, 1.98952e-13, 2.72848e-12, 1.27205, -0.111038, -0.0174506, 0.406433 )
+visible = false
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="TopRight" type="MeshInstance" parent="TheBox/CSGMesh"]
+transform = Transform( 0.008, -1.06247e-13, 4.44089e-16, 1.67075e-15, 0.51296, 5.55112e-16, -1.11022e-16, -2.13163e-14, 0.013, 0.00422823, 0.492806, 0.989172 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="RigidBody" type="RigidBody" parent="TheBox/CSGMesh/TopRight"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/TopRight/RigidBody"]
+transform = Transform( 3.02316, 9.86037e-13, -7.38964e-13, -1.88104e-16, 0.999606, -1.33227e-15, 0, 1.81899e-12, 3.19481, 1.52588e-05, 0.04141, -0.903236 )
+shape = SubResource( 15 )
+
+[node name="bar" type="MeshInstance" parent="TheBox/CSGMesh/TopRight"]
+transform = Transform( 3.02886, -8.58672e-13, -1.7053e-13, 1.09129e-14, 1.03047, 4.44089e-16, 2.55795e-13, 1.13687e-12, 1.27205, -9.91821e-05, -0.00264275, -0.0131683 )
+visible = false
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="BottomRight" type="MeshInstance" parent="TheBox/CSGMesh"]
+transform = Transform( 0.00812593, -1.41872e-13, 6.66134e-16, 2.2242e-15, 0.520389, 3.33067e-16, -3.33067e-16, -1.42109e-14, 0.013378, 0.00422746, 0.491472, 0.0118398 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="RigidBody" type="RigidBody" parent="TheBox/CSGMesh/BottomRight"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/BottomRight/RigidBody"]
+transform = Transform( 2.97632, 3.70211e-12, -2.27374e-13, 7.18769e-16, 1, -4.44089e-16, 0, 0, 3.10454, 5.34058e-05, 0.0859114, 1.19209e-07 )
+shape = SubResource( 16 )
+
+[node name="bar" type="MeshInstance" parent="TheBox/CSGMesh/BottomRight"]
+transform = Transform( 2.98192, 2.79261e-12, 0, 7.82304e-15, 1, 0, 2.27374e-13, 6.82121e-13, 1.23611, 0, 0, 0.0583804 )
+visible = false
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="BottomUpper" type="MeshInstance" parent="TheBox/CSGMesh"]
+transform = Transform( -3.93403e-10, 0.504003, 2.22045e-16, -0.009, -2.20307e-08, -5.55112e-17, -3.88578e-16, -1.42109e-14, 0.009, 0.503865, 1.00168, 0.00783629 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="RigidBody" type="RigidBody" parent="TheBox/CSGMesh/BottomUpper"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/BottomUpper/RigidBody"]
+transform = Transform( 2.68726, -1.44149e-13, 2.84217e-14, -1.12218e-15, 1.06922, 1.77636e-15, 1.42109e-13, 9.09495e-13, 4.61473, -4.62005, -2.38419e-07, 5.36442e-07 )
+shape = SubResource( 17 )
+
+[node name="bar" type="MeshInstance" parent="TheBox/CSGMesh/BottomUpper"]
+transform = Transform( 2.04932, -1.09347e-12, -1.10689e-07, -4.63554e-15, 1.01358, 7.99361e-15, 8.95789e-08, -9.09495e-12, 2.53228, -0.696991, -0.0214102, 0.205935 )
+visible = false
+mesh = SubResource( 18 )
+material/0 = SubResource( 13 )
+
+[node name="TopUpper" type="MeshInstance" parent="TheBox/CSGMesh"]
+transform = Transform( -3.93403e-10, 0.490211, 2.22045e-16, -0.009, -2.14278e-08, 1.11022e-16, -2.22045e-16, -1.42109e-14, 0.009, 0.502459, 1.0062, 1.00079 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="RigidBody" type="RigidBody" parent="TheBox/CSGMesh/TopUpper"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/TopUpper/RigidBody"]
+transform = Transform( 2.68726, -1.44149e-13, 2.55795e-13, -1.12509e-15, 1.06446, -2.66454e-15, 1.7053e-13, 0, 4.61473, -4.11771, -0.0113037, -3.04086 )
+shape = SubResource( 19 )
+
+[node name="bar" type="MeshInstance" parent="TheBox/CSGMesh/TopUpper"]
+transform = Transform( 2.04932, -1.83974e-13, -1.1069e-07, -6.39848e-16, 1.00907, 1.15463e-14, 8.95788e-08, -1.00044e-11, 2.53228, -1.19916, -0.0326183, -1.4351 )
+visible = false
+mesh = SubResource( 18 )
+material/0 = SubResource( 13 )
+
+[node name="LeftUpper" type="MeshInstance" parent="TheBox/CSGMesh"]
+transform = Transform( -3.93403e-10, -2.17919e-08, 0.009, -0.009, -2.17919e-08, -3.93403e-10, 3.93403e-10, -0.49854, -3.93403e-10, 0.994295, 1.00447, 0.505614 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = ExtResource( 6 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RigidBody" type="RigidBody" parent="TheBox/CSGMesh/LeftUpper"]
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/LeftUpper/RigidBody"]
+transform = Transform( 2.68726, -9.09495e-13, 2.66649e-13, -1.9984e-15, 0.999632, -1.77636e-15, -3.18189e-13, -9.09495e-13, 4.61473, -2.18714, 0, -1.89984 )
+shape = SubResource( 20 )
+
+[node name="bar" type="MeshInstance" parent="TheBox/CSGMesh/LeftUpper"]
+transform = Transform( 2.04932, -1.81899e-12, 5.90047e-13, -2.66454e-15, 0.947615, 2.61213e-11, -5.22571e-13, -1.09139e-11, 2.53228, -0.723824, -0.0401301, 0.479645 )
+visible = false
+mesh = SubResource( 18 )
+material/0 = SubResource( 13 )
+
+[node name="RightUpper" type="MeshInstance" parent="TheBox/CSGMesh"]
+transform = Transform( -4.07923e-10, -2.12476e-08, 0.00884712, -0.00933214, -2.12476e-08, -3.86722e-10, 4.0792e-10, -0.486089, -3.8672e-10, -0.0048849, 0.996271, 0.495943 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="bar" type="MeshInstance" parent="TheBox/CSGMesh/RightUpper"]
+transform = Transform( 1.9484, 2.27374e-13, 7.73913e-14, -1.11022e-16, 0.97426, 2.68541e-11, -2.38304e-13, -1.18234e-11, 2.53956, -0.335686, 0, 0 )
+visible = false
+mesh = SubResource( 18 )
+material/0 = SubResource( 13 )
+
+[node name="RigidBody" type="RigidBody" parent="TheBox/CSGMesh/RightUpper"]
+transform = Transform( 1, 5.68434e-14, -1.38062e-14, 2.22045e-16, 1, 1.77636e-15, -2.14934e-15, -2.27374e-13, 1, 0, 0, 0 )
+input_capture_on_drag = true
+collision_layer = 2
+mode = 1
+continuous_cd = true
+contacts_reported = 1000
+contact_monitor = true
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/RightUpper/RigidBody"]
+transform = Transform( 2.55492, 4.54747e-13, -1.15637e-12, -3.10862e-15, 1, -8.88178e-15, 2.29367e-14, -3.63798e-12, 4.628, -1.86057, 0, 0 )
+shape = SubResource( 21 )
+
+[node name="CSGRigidBody" type="RigidBody" parent="TheBox/CSGMesh"]
+transform = Transform( 1, 1.01038e-15, 0, 1.01038e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 2
+mode = 1
+continuous_cd = true
+contacts_reported = 9999
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="TheBox/CSGMesh/CSGRigidBody"]
+transform = Transform( 0.5, 9.75909e-16, 0, 5.05192e-16, 1.00261, 0, 0, 0, 0.5, 0.502703, 0.547104, 0.495193 )
+shape = SubResource( 22 )
+
+[connection signal="body_entered" from="TheBox/CSGMesh/CSGRigidBody" to="TheBox/CSGMesh" method="_on_CSGRigidBody_body_entered"]

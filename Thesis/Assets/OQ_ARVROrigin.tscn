@@ -1,0 +1,217 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Feature_VRSimulator.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/RayCast.gd" type="Script" id=2]
+[ext_resource path="res://Materials/FinishedMaterials/Glass.tres" type="Material" id=3]
+[ext_resource path="res://Materials/FinishedMaterials/Brick.tres" type="Material" id=4]
+[ext_resource path="res://Materials/FinishedMaterials/WoodPlankFloor.tres" type="Material" id=5]
+[ext_resource path="res://OQ_Toolkit/OQ_LeftController.tscn" type="PackedScene" id=6]
+[ext_resource path="res://OQ_Toolkit/OQ_RightController.tscn" type="PackedScene" id=7]
+[ext_resource path="res://OQ_Toolkit/OQ_UI2D/OQ_UI2DCanvas.tscn" type="PackedScene" id=8]
+[ext_resource path="res://OQ_Toolkit/OQ_Helpers/OQ_VisibilityToggle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Lamp.tscn" type="PackedScene" id=11]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRController/Feature_UIRayCast.tscn" type="PackedScene" id=12]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Locomotion_Stick.tscn" type="PackedScene" id=13]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends ARVROrigin
+
+export var debug_information := false;
+onready var WE: WorldEnvironment = null
+onready var dl: DirectionalLight = null
+onready var rightController = get_node(\"OQ_RightController\")
+var is_fixed = false;
+
+func _ready():
+	print(\"I have been summoned\")
+	var list = get_parent().get_parent().get_children()
+	print(list)
+	for l in list:
+		if(l.get_class() == \"WorldEnvironment\"):
+			WE = l
+			dl = WE.get_child(0)
+	
+# Sets up everything as it is expected by the helper scripts in the vr singleton
+func _enter_tree():
+	if (!vr):
+		vr.log_error(\"in OQ_ARVROrigin._enter_tree(): no vr singleton\");
+		return;
+	if (vr.vrOrigin != null):
+		vr.log_warning(\"in OQ_ARVROrigin._enter_tree(): origin already set; overwrting it\");
+	vr.vrOrigin = self;
+
+
+func _exit_tree():
+	if (!vr):
+		vr.log_error(\"in OQ_ARVROrigin._exit_tree(): no vr singleton\");
+		return;
+	if (vr.vrOrigin != null && vr.vrOrigin != self): # not sure why it can be null here on exit...
+		vr.log_error(\"in OQ_ARVROrigin._exit_tree(): different vrOrigin\");
+		return;
+	vr.vrOrigin = null;
+
+func _show_debug_information():
+	var vro = global_transform.origin;
+	vr.show_dbg_info(name, \"world_pos=(%.2f, %.2f, %.2f)\" %
+	[vro.x, vro.y, vro.z]);
+
+func _process(_dt):
+	if (debug_information): _show_debug_information();
+
+
+
+
+
+func _on_HSlider_value_changed(value):
+	if(WE):
+		WE.environment.background_sky.sun_latitude = value
+		dl.rotation_degrees.x = value + 180
+"
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0, 0.392157, 1, 1 )
+
+[node name="OQ_ARVROrigin" type="ARVROrigin"]
+script = SubResource( 1 )
+
+[node name="OQ_ARVRCamera" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 23.5122, 0 )
+current = true
+far = 2000.0
+
+[node name="OQ_LeftController" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -0.249977, 20.9298, -0.5 )
+
+[node name="Feature_UIRayCast" parent="OQ_LeftController" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00513482, 0, -3.8147e-06 )
+
+[node name="EndPoint" type="Position3D" parent="OQ_LeftController/Feature_UIRayCast"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00508761, -0.000695705, -0.997648 )
+
+[node name="LampPoint" type="Position3D" parent="OQ_LeftController/Feature_UIRayCast"]
+transform = Transform( 1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0.00510406, -0.000695229, -0.997803 )
+
+[node name="Lamp" parent="OQ_LeftController/Feature_UIRayCast/LampPoint" instance=ExtResource( 11 )]
+visible = false
+
+[node name="StartPoint" type="Position3D" parent="OQ_LeftController/Feature_UIRayCast"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00508773, -0.000695705, -0.00441742 )
+
+[node name="CustomRayCast" type="Spatial" parent="OQ_LeftController"]
+script = ExtResource( 2 )
+brickMaterial = ExtResource( 4 )
+woodMaterial = ExtResource( 5 )
+glassMaterial = ExtResource( 3 )
+
+[node name="Position" type="Spatial" parent="OQ_LeftController/CustomRayCast"]
+
+[node name="RayCast" type="RayCast" parent="OQ_LeftController/CustomRayCast/Position"]
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, -3, 0 )
+collision_mask = 3
+collide_with_areas = true
+
+[node name="MeshInstance" type="MeshInstance" parent="OQ_LeftController/CustomRayCast/Position"]
+transform = Transform( 0.00783149, 0, 0, 0, 0.0167864, 0, 0, 0, 0.495836, 0, 0.000952244, -0.495068 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../RayCast")
+material/0 = SubResource( 3 )
+
+[node name="ObjectPointer" type="Position3D" parent="OQ_LeftController/CustomRayCast/Position"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018347, -0.983252 )
+
+[node name="OQ_RightController" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0.250008, 20.0601, -0.5 )
+
+[node name="OQ_VisibilityToggle" parent="OQ_RightController" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0854332, 0.178913, 0 )
+invisible_on_start = true
+
+[node name="OQ_UI2DCanvas" parent="OQ_RightController/OQ_VisibilityToggle" instance=ExtResource( 8 )]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas"]
+margin_left = 1.0
+margin_right = 177.0
+margin_bottom = 108.0
+border_color = Color( 0, 0, 0, 1 )
+border_width = 3.8
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 174.0
+margin_bottom = 107.0
+color = Color( 0.0117647, 0.262745, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 4.0
+margin_top = 15.0
+margin_right = 170.0
+margin_bottom = 31.0
+min_value = -180.0
+max_value = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SunP" type="Label" parent="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 48.0
+margin_top = 2.0
+margin_right = 127.0
+margin_bottom = 16.0
+text = "Sun position"
+
+[node name="Brick" type="Button" parent="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 5.0
+margin_top = 56.0
+margin_right = 41.0
+margin_bottom = 76.0
+text = "Brick"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Glass" type="Button" parent="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 61.0
+margin_top = 56.0
+margin_right = 108.0
+margin_bottom = 76.0
+text = "Glass"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wood" type="Button" parent="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 117.0
+margin_top = 56.0
+margin_right = 166.0
+margin_bottom = 76.0
+text = "Wood"
+
+[node name="Label" type="Label" parent="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 57.0
+margin_top = 34.0
+margin_right = 112.0
+margin_bottom = 48.0
+text = "Textures"
+
+[node name="Feature_VRSimulator" parent="." instance=ExtResource( 1 )]
+player_height = 1
+
+[node name="Locomotion_Stick" parent="." instance=ExtResource( 13 )]
+
+[connection signal="value_changed" from="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/Brick" to="OQ_LeftController/CustomRayCast" method="_on_Brick_pressed"]
+[connection signal="pressed" from="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/Glass" to="OQ_LeftController/CustomRayCast" method="_on_Glass_pressed"]
+[connection signal="pressed" from="OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/Wood" to="OQ_LeftController/CustomRayCast" method="_on_Wood_pressed"]

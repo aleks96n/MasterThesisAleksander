@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=3 format=2]
+
+[ext_resource path="res://Skies/je_gray_park_4k.exr" type="Texture" id=1]
+
+[sub_resource type="PanoramaSky" id=1]
+radiance_size = 4
+panorama = ExtResource( 1 )
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+tonemap_mode = 3

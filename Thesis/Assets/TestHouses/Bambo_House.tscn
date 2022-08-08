@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Materials/Glass.tres" type="Material" id=1]
+[ext_resource path="res://Assets/TestHouses/Bambo_House.dae" type="PackedScene" id=2]
+
+[node name="Bambo_House" instance=ExtResource( 2 )]
+
+[node name="barrels" parent="." index="0"]
+use_in_baked_light = true
+
+[node name="boards" parent="." index="1"]
+use_in_baked_light = true
+
+[node name="body_house" parent="." index="2"]
+use_in_baked_light = true
+
+[node name="chimneys" parent="." index="3"]
+use_in_baked_light = true
+
+[node name="door" parent="." index="4"]
+use_in_baked_light = true
+material/1 = ExtResource( 1 )
+
+[node name="fundametnts" parent="." index="5"]
+use_in_baked_light = true
+
+[node name="garage" parent="." index="6"]
+use_in_baked_light = true
+
+[node name="gutters" parent="." index="7"]
+use_in_baked_light = true
+
+[node name="lamp_exterior" parent="." index="8"]
+use_in_baked_light = true
+
+[node name="parapet" parent="." index="9"]
+use_in_baked_light = true
+
+[node name="ridge" parent="." index="10"]
+use_in_baked_light = true
+
+[node name="roof" parent="." index="11"]
+use_in_baked_light = true
+
+[node name="stairs" parent="." index="12"]
+use_in_baked_light = true
+
+[node name="wall_barrels" parent="." index="13"]
+use_in_baked_light = true
+
+[node name="window_roof" parent="." index="14"]
+use_in_baked_light = true
+
+[node name="windows" parent="." index="15"]
+use_in_baked_light = true
+material/1 = ExtResource( 1 )

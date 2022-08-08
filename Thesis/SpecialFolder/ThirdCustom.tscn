@@ -1,0 +1,185 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/Homes/untitled.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Scripts/PlaceLater.gd" type="Script" id=2]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://OQ_Toolkit/OQ_Helpers/OQ_VisibilityToggle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRController/Feature_UIRayCast.tscn" type="PackedScene" id=6]
+[ext_resource path="res://OQ_Toolkit/OQ_LeftController.tscn" type="PackedScene" id=7]
+[ext_resource path="res://OQ_Toolkit/OQ_RightController.tscn" type="PackedScene" id=8]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Locomotion_Stick.tscn" type="PackedScene" id=9]
+[ext_resource path="res://OQ_Toolkit/OQ_UI2D/OQ_UI2DCanvas.tscn" type="PackedScene" id=10]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Feature_VRSimulator.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Lamp.tscn" type="PackedScene" id=12]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.647059, 0.0901961, 0.0901961, 1 )
+
+[node name="PlaceLater" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="House" type="MeshInstance" parent="."]
+transform = Transform( 0.390507, 0, 0, 0, 0.438282, 0, 7.45058e-09, 0, 0.390507, 0, 0, 0 )
+use_in_baked_light = true
+mesh = ExtResource( 1 )
+skeleton = NodePath("../../../../../../../../../../../..")
+material/0 = SubResource( 1 )
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+
+[node name="OQ_ARVROrigin" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.0991634, 0, 0.995071, 0, 1, 0, -0.995071, 0, 0.0991634, -3.53809, 2.49622, 20.8211 )
+
+[node name="OQ_ARVRCamera" parent="OQ_ARVROrigin" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 23.5122, 0 )
+current = true
+far = 2000.0
+
+[node name="OQ_LeftController" parent="OQ_ARVROrigin" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -0.249977, 20.9298, -0.5 )
+
+[node name="Feature_UIRayCast" parent="OQ_ARVROrigin/OQ_LeftController" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00513482, 0, -3.8147e-06 )
+
+[node name="EndPoint" type="Position3D" parent="OQ_ARVROrigin/OQ_LeftController/Feature_UIRayCast"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00508761, -0.000695705, -0.997648 )
+
+[node name="LampPoint" type="Position3D" parent="OQ_ARVROrigin/OQ_LeftController/Feature_UIRayCast"]
+transform = Transform( 1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0.00510406, -0.000695229, -0.997803 )
+
+[node name="Lamp" parent="OQ_ARVROrigin/OQ_LeftController/Feature_UIRayCast/LampPoint" instance=ExtResource( 12 )]
+visible = false
+
+[node name="StartPoint" type="Position3D" parent="OQ_ARVROrigin/OQ_LeftController/Feature_UIRayCast"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00508773, -0.000695705, -0.00441742 )
+
+[node name="OQ_RightController" parent="OQ_ARVROrigin" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0.250008, 20.0601, -0.5 )
+
+[node name="OQ_VisibilityToggle" parent="OQ_ARVROrigin/OQ_RightController" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0854332, 0.178913, 0 )
+invisible_on_start = true
+
+[node name="OQ_UI2DCanvas" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle" instance=ExtResource( 10 )]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas"]
+margin_left = 1.0
+margin_right = 177.0
+margin_bottom = 198.0
+border_color = Color( 0, 0, 0, 1 )
+border_width = 3.8
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 174.0
+margin_bottom = 196.0
+color = Color( 0.0117647, 0.262745, 0.0196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 4.0
+margin_top = 15.0
+margin_right = 170.0
+margin_bottom = 31.0
+min_value = -180.0
+max_value = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SunP" type="Label" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 48.0
+margin_top = 2.0
+margin_right = 127.0
+margin_bottom = 16.0
+text = "Sun position"
+
+[node name="Button" type="Button" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 62.0
+margin_top = 106.0
+margin_right = 105.0
+margin_bottom = 126.0
+text = "Bake"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Floor" type="Label" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 71.0
+margin_top = 35.0
+margin_right = 103.0
+margin_bottom = 49.0
+text = "Floor"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 21.0
+margin_top = 58.0
+margin_right = 53.0
+margin_bottom = 78.0
+text = "1st"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 110.0
+margin_top = 57.0
+margin_right = 146.0
+margin_bottom = 77.0
+text = "2nd"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 68.0
+margin_top = 145.0
+margin_right = 108.0
+margin_bottom = 159.0
+text = "Lamp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="placeLamp" type="Button" parent="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect"]
+margin_left = 48.0
+margin_top = 164.0
+margin_right = 124.0
+margin_bottom = 184.0
+text = "Place Lamp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Locomotion_Stick" parent="OQ_ARVROrigin" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 3.84077, -0.499998 )
+
+[node name="Feature_VRSimulator" parent="." instance=ExtResource( 11 )]
+
+[connection signal="value_changed" from="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="OQ_ARVROrigin/OQ_RightController/OQ_VisibilityToggle/OQ_UI2DCanvas/ReferenceRect/ColorRect/placeLamp" to="." method="_on_placeLamp_pressed"]

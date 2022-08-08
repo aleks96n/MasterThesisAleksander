@@ -1,0 +1,13 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Materials/Brick/Bricks054_1K_AmbientOcclusion.png" type="Texture" id=1]
+[ext_resource path="res://Materials/Brick/Bricks054_1K_Color.png" type="Texture" id=2]
+
+[resource]
+albedo_color = Color( 0.639216, 0.639216, 0.639216, 0 )
+albedo_texture = ExtResource( 2 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 1 )
+ao_on_uv2 = false
+ao_texture_channel = 0

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Materials/FinishedMaterials/WoodPlankFloor.tres" type="Material" id=1]
+[ext_resource path="res://addons/Sky/sky_texture.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://Textures/milkywaypan_brunier_2048.jpg" type="Texture" id=4]
+
+[sub_resource type="PanoramaSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+
+[sub_resource type="CubeMesh" id=3]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Sky_texture" parent="." instance=ExtResource( 2 )]
+night_sky = ExtResource( 4 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31848, 3.6197, 8.79657 )
+environment = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+
+[node name="Time_Of_Day" type="HSlider" parent="."]
+margin_right = 424.0
+margin_bottom = 16.0
+max_value = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="sky_updated" from="Sky_texture" to="." method="_on_Sky_texture_sky_updated"]

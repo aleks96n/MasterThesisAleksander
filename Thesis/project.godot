@@ -1,0 +1,173 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Draggable",
+"language": "GDScript",
+"path": "res://addons/DragDrop3D/Draggable.gd"
+}, {
+"base": "Spatial",
+"class": "Feature_RigidBodyGrab",
+"language": "GDScript",
+"path": "res://OQ_Toolkit/OQ_ARVRController/scripts/Feature_RigidBodyGrab.gd"
+}, {
+"base": "Spatial",
+"class": "Feature_ToolGrab",
+"language": "GDScript",
+"path": "res://OQ_Toolkit/OQ_ARVRController/scripts/Feature_ToolGrab.gd"
+}, {
+"base": "RigidBody",
+"class": "OQClass_GrabbableRigidBody",
+"language": "GDScript",
+"path": "res://OQ_Toolkit/OQ_Classes/OQClass_GrabbableRigidBody.gd"
+}, {
+"base": "Area",
+"class": "OQClass_GrabbableToolPart",
+"language": "GDScript",
+"path": "res://OQ_Toolkit/OQ_Classes/OQClass_GrabbableToolPart.gd"
+}, {
+"base": "Spatial",
+"class": "OQClass_Tool",
+"language": "GDScript",
+"path": "res://OQ_Toolkit/OQ_Classes/OQClass_Tool.gd"
+}, {
+"base": "Spatial",
+"class": "OQClass_ToolGrabController",
+"language": "GDScript",
+"path": "res://OQ_Toolkit/OQ_Classes/OQClass_ToolGrabController.gd"
+}, {
+"base": "OQClass_ToolGrabController",
+"class": "OQClass_ToolGrabLinearController",
+"language": "GDScript",
+"path": "res://OQ_Toolkit/OQ_Classes/OQClass_ToolGrabLinearController.gd"
+}, {
+"base": "ARVRController",
+"class": "OQ_ARVRController",
+"language": "GDScript",
+"path": "res://OQ_Toolkit/OQ_ARVRController/scripts/OQ_ARVRController.gd"
+}, {
+"base": "OculusTracker",
+"class": "OculusHandTracker",
+"language": "GDScript",
+"path": "res://addons/godot_ovrmobile/example_scenes/oculus_hand_tracker.gd"
+}, {
+"base": "OculusTracker",
+"class": "OculusTouchController",
+"language": "GDScript",
+"path": "res://addons/godot_ovrmobile/example_scenes/oculus_touch_controller.gd"
+}, {
+"base": "ARVRController",
+"class": "OculusTracker",
+"language": "GDScript",
+"path": "res://addons/godot_ovrmobile/example_scenes/oculus_tracker.gd"
+} ]
+_global_script_class_icons={
+"Draggable": "",
+"Feature_RigidBodyGrab": "",
+"Feature_ToolGrab": "",
+"OQClass_GrabbableRigidBody": "",
+"OQClass_GrabbableToolPart": "",
+"OQClass_Tool": "",
+"OQClass_ToolGrabController": "",
+"OQClass_ToolGrabLinearController": "",
+"OQ_ARVRController": "",
+"OculusHandTracker": "",
+"OculusTouchController": "",
+"OculusTracker": ""
+}
+
+[application]
+
+config/name="Thesis Demo"
+run/main_scene="res://Scenes/GameMain.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+vr="*res://OQ_Toolkit/vr_autoload.gd"
+DragDropController="*res://addons/DragDrop3D/DragDropController.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/zylann.treegen/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
+
+[global]
+
+autoload=false
+
+[input]
+
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_wheel_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+ui_wheel_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+enter={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+debugKey={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+MouseLeft={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.301961, 0.301961, 0.301961, 1 )
+environment/default_environment="res://default_env.tres"

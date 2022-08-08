@@ -1,0 +1,289 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="CubeMesh" id=17]
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+
+[sub_resource type="BoxShape" id=5]
+
+[node name="@@9" type="Spatial"]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )
+
+[node name="ToSaveAsset" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0276446, 0, 0.00656319 )
+
+[node name="Foundation" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation2" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation2/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation3" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation3/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation4" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 0 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation4/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation5" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 0 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation5/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation6" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation6/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation7" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 2 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation7/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation8" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 2 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation8/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation9" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 2 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation9"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation9/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation10" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 2 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation10"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation10/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation11" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation11"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation11/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation12" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 4 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation12"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation12/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation13" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 4 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation13"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation13/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation14" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 4 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation14"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation14/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation15" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 4 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation15"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation15/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation16" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 6 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation16"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation16/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation17" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 6 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation17"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation17/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation18" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 6 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation18"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation18/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation19" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 6 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation19"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation19/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation20" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 6 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation20"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation20/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation21" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 8 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation21"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation21/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation22" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 8 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation22"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation22/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation23" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 8 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation23"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation23/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation24" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 8 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation24"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation24/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Foundation25" type="MeshInstance" parent="ToSaveAsset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 8 )
+mesh = SubResource( 17 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="ToSaveAsset/Foundation25"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ToSaveAsset/Foundation25/StaticBody"]
+shape = SubResource( 5 )
