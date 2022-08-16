@@ -1,8 +1,8 @@
 # MThesis
 
-To run this application, you will need Godot. The last version this application was tested on was Godot 3.4. Please note that the beta versions of Godot are not adviced.
+To run this application, you will either need Godot or thje knowledge on how to run .apk files. The .apk file is included in the releases. The last version this application was tested on was Godot 3.4. Please note that the beta versions of Godot are not adviced.
 
-Make sure to enable your Android settings in Godot, this can be done using the official guide:
+Make sure to enable your Android settings in Godot (if planning to export via Godot), this can be done using the official guide:
 - https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html
 
 Once that is done, connect your VR headset and you should see an Android Icon appear on the top right of the Godot window. If not, make sure the VR headset is running and not sleeping.
